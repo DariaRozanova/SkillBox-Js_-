@@ -1,4 +1,4 @@
-import { Card } from "./Card.js";
+import { AmazingCard, Card } from "./Card.js";
 (function(){
     const cards = document.getElementById('cards')
     const resetButton = document.getElementById('resetBtn');
@@ -11,7 +11,7 @@ import { Card } from "./Card.js";
         popup.classList.remove('active')}
     );
 
-    const cardsCount = 8;
+    const cardsCount = 4;
     startGame();
 
     function startGame(){
@@ -24,14 +24,14 @@ import { Card } from "./Card.js";
         }
 
         function createCard(number){
-            const card = new Card(cards, number)
-
+            const card = new AmazingCard(cards, number)
             card.DOM_elem.addEventListener('click', ()=>{
+                console.log(card)
                 if (card.open || card.success){
                     return;
                 }
                 if (firstCard && secondCard){
-                    if (firstCard.cardNumber != secondCard.cardNumber){
+                    if (firstCard._cardNumber != secondCard._cardNumber){
                         firstCard.open = false;
                         secondCard.open = false;
                         firstCard = null;
@@ -49,7 +49,7 @@ import { Card } from "./Card.js";
                 }
 
                 if (firstCard && secondCard){
-                    if (firstCard.cardNumber == secondCard.cardNumber){
+                    if (firstCard._cardNumber == secondCard._cardNumber){
                         firstCard.success = true;
                         secondCard.success = true;
                         firstCard = null;

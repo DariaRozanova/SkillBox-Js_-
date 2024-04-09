@@ -6,9 +6,9 @@ export class Card{
     }
 
     createElement(){
-        const card = document.createElement('li');
+        const card = document.createElement('div');
         card.classList.add('card');
-        card.textContent = this.cardNumber;
+        card.innerHTML = this._cardNumber;
         this.container.append(card);
         return card;  
     }
@@ -47,5 +47,24 @@ export class Card{
 
     get success(){
         return this.DOM_elem.classList.contains('correct');
+    }
+}
+
+export class AmazingCard extends Card{
+    set cardNumber(value){
+        const cardsImgArray = [
+            'img/1.jpg',
+            'img/2.jpg',
+            'img/3.jpg',
+            'img/4.jpg',
+            'img/5.jpg',
+            'img/6.jpg',
+            'img/7.jpg',
+            'img/8.jpg',
+         ]
+         const img = document.createElement('img')
+         img.src = cardsImgArray[value]
+         this.DOM_elem.style.backgroundImage = img;
+         this._cardNumber = cardsImgArray[value];
     }
 }
