@@ -12,7 +12,7 @@ function loadResource(src){
             link.rel = 'stylesheet';
             link.href = src;
             cssPromises[src] = new Promise(resolve =>{
-                link.addEventListener('load', ()=> resolve());
+                link.addEventListener('load', resolve);
             })
             document.head.append(link);
         }

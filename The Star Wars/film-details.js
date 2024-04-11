@@ -9,32 +9,41 @@ export function render(data){
 
     const backBtn = document.createElement('a');
     backBtn.classList.add('btn', 'btn-info');
-    backBtn.textContent = 'Back to episodes'
+    backBtn.textContent = 'Back to episodes';
     backBtn.href = '?';
 
-    const characters_div = create_list_div('Characters', 'characters-list')
-    const planets_div = create_list_div('Planets', 'planets-list')
-    const species_div = create_list_div('Species', 'species-list')
+    const charactersDiv = create_list_div('Characters', 'characters-list');
+    const planetsDiv = create_list_div('Planets', 'planets-list');
+    const speciesDiv = create_list_div('Species', 'species-list');
 
     container.append(title);
     container.append(decs);
-    container.append(characters_div);
-    container.append(planets_div);
-    container.append(species_div);
+    container.append(charactersDiv);
+    container.append(planetsDiv);
+    container.append(speciesDiv);
     container.append(backBtn);
     
     document.body.append(container);
 
     //вывести список планет, список рас
  
-    function loadData(url) {
-        return fetch(url).then(res => res.json());
+    // function loadData(url) {
+    //     return fetch(url).then(res => res.json());
+    // }
+
+    async function loadData(url){
+        try {
+            const response = await fetch(url).then(res => res.json());
+            return response.name;
+        } catch (error) {
+            return '';
+        }
     }
 
     async function getData(urls, DOMelem){
         const elem = document.querySelector(DOMelem);
         for (let i = 0; i < urls.length; i++){
-            const name = await loadData(urls[i]).then(res => res.name)
+            const name = await loadData(urls[i])
             const li = document.createElement('li');
             li.classList.add('list-group-item', 'list-group-item-action');
             li.textContent = name;
