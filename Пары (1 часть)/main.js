@@ -11,7 +11,7 @@ import { AmazingCard, Card } from "./Card.js";
         popup.classList.remove('active')}
     );
 
-    const cardsCount = 4;
+    const cardsCount = 8;
     startGame();
 
     function startGame(){
