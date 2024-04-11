@@ -25,15 +25,31 @@ h1{
     width: 150px;
     height: 150px;
     border-radius: 20px;
-    background-color: rgb(99, 168, 177);
+    background-color: rgb(197, 164, 195);
     font-size: 0;
     font-family: 'Jost', sans-serif;
     color:antiquewhite;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.amazing-img{
+    display: none;
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+}
+
+.opened > .amazing-img{
+    display: block;
+}
+
+.correct > .amazing-img{
+    display: block;
+    opacity: 0.5;
+}
+
 .card:hover{
-    background-color: rgb(112, 185, 195);
+    background-color: rgb(173, 137, 171);
     cursor: pointer;
 }
 

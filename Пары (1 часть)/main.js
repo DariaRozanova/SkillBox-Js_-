@@ -20,18 +20,15 @@ import { AmazingCard, Card } from "./Card.js";
         let secondCard;
 
         for (const cardNumber of cardNumbers){
-            createCard(cardNumber);
-        }
-
-        function createCard(number){
-            const card = new AmazingCard(cards, number)
-            card.DOM_elem.addEventListener('click', ()=>{
-                console.log(card)
+            const card = new AmazingCard(cards, cardNumber)
+            //const card = new Card(cards, cardNumber)
+            card.node.addEventListener('click', ()=>{
                 if (card.open || card.success){
                     return;
                 }
+                
                 if (firstCard && secondCard){
-                    if (firstCard._cardNumber != secondCard._cardNumber){
+                    if (firstCard.cardNumber != secondCard.cardNumber){
                         firstCard.open = false;
                         secondCard.open = false;
                         firstCard = null;
@@ -39,6 +36,7 @@ import { AmazingCard, Card } from "./Card.js";
                     }
 
                 }
+
                 card.open = true;
 
                 if (!firstCard){
@@ -49,7 +47,7 @@ import { AmazingCard, Card } from "./Card.js";
                 }
 
                 if (firstCard && secondCard){
-                    if (firstCard._cardNumber == secondCard._cardNumber){
+                    if (firstCard.cardNumber == secondCard.cardNumber){
                         firstCard.success = true;
                         secondCard.success = true;
                         firstCard = null;
@@ -63,20 +61,20 @@ import { AmazingCard, Card } from "./Card.js";
             })
         }
     }
-})();
 
-function createNumbersArray(count){
-    let arr = [];
-    for (let i = 0; i < count; i++){
-        arr.push(i+1, i+1);
+    function createNumbersArray(count){
+        let arr = [];
+        for (let i = 0; i < count; i++){
+            arr.push(i+1, i+1);
+        }
+        return arr;
     }
-    return arr;
-}
-
-function shuffle(arr){
-    for (let i = arr.length - 1; i > 0; i--) { 
-        const j = Math.floor(Math.random() * (i + 1)); 
-        [arr[i], arr[j]] = [arr[j], arr[i]]; 
-    } 
-    return arr;
-}
+    
+    function shuffle(arr){
+        for (let i = arr.length - 1; i > 0; i--) { 
+            const j = Math.floor(Math.random() * (i + 1)); 
+            [arr[i], arr[j]] = [arr[j], arr[i]]; 
+        } 
+        return arr;
+    }
+})();
