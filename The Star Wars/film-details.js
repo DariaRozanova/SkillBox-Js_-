@@ -12,9 +12,9 @@ export function render(data){
     backBtn.textContent = 'Back to episodes';
     backBtn.href = '?';
 
-    const charactersDiv = create_list_div('Characters', 'characters-list');
-    const planetsDiv = create_list_div('Planets', 'planets-list');
-    const speciesDiv = create_list_div('Species', 'species-list');
+    const charactersDiv = createListDiv('Characters', 'characters-list');
+    const planetsDiv = createListDiv('Planets', 'planets-list');
+    const speciesDiv = createListDiv('Species', 'species-list');
 
     container.append(title);
     container.append(decs);
@@ -66,7 +66,7 @@ export function render(data){
     return container;
 }
 
-function create_list_div(_title, class_name){
+function createListDiv(_title, class_name){
     const div = document.createElement('div');
     const title = document.createElement('h2');
     title.textContent = _title
